@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Web Proxy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Web Proxy</h1>
+    <p>Enter any site URL below to browse through this one whitelisted domain.</p>
+  </header>
+  <main>
+    <form id="urlForm">
+      <input type="url"
+             id="urlInput"
+             placeholder="https://example.com"
+             pattern="https?://.+" required>
+      <button>Go</button>
+    </form>
+  </main>
+  <script>
+    document.getElementById('urlForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const url = encodeURIComponent(document.getElementById('urlInput').value.trim());
+      window.location.href = `results.html?target=${url}`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Proxy Results</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>Proxy Results</h1></header>
+  <main>
+    <iframe id="frame" sandbox="allow-scripts allow-same-origin"></iframe>
+  </main>
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    const t = p.get('target');
+    if (!t) {
+      document.body.innerHTML = '<p style="color:red">No target URL provided.</p>';
+    } else {
+      document.getElementById('frame').src = `/proxy?url=${t}`;
+    }
+  </script>
+</body>
+</html>
